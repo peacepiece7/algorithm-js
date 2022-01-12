@@ -1,0 +1,24 @@
+{
+  "name": "algorithm",
+  "version": "1.0.0",
+  "description": "study algorithm and js method",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peacepiece7/algorithm-js.git"
+  },
+  "keywords": [
+    "algorith",
+    "method",
+    "javascript"
+  ],
+  "author": "peacePiece",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/peacepiece7/algorithm-js/issues"
+  },
+  "homepage": "https://github.com/peacepiece7/algorithm-js#readme"
+}
