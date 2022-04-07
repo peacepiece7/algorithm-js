@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>세 수중 최솟값</title>
+  </head>
+  <body>
+    <script>
+      let arr = [6, 5, 11];
+      function solution(arr) {
+        const b = arr.reduce((prev, next) => {
+          if (prev > next) {
+            return next;
+          } else {
+            return prev;
+          }
+        });
+
+        return b;
+      }
+      console.log("1sol answer :", solution(arr));
+      // if문으로만 해보시오
+      function solution2(arr) {
+        let min = arr[0];
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] < min) {
+            min = arr[i];
+          }
+        }
+        return min;
+      }
+      console.log(solution2(arr));
+      // 인자ㅏㄱ 세개
+      function solution3(a, b, c) {
+        if (a > b || a > c) {
+          return a;
+        } else if (b > a || b > c) {
+          return b;
+        } else {
+          return c;
+        }
+      }
+      console.log(solution3(6, 5, 11));
+
+      function solution3(a, b, c) {}
+      console.log(solution3(6, 5, 11));
+    </script>
+  </body>
+</html>

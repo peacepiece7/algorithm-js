@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>일곱난쟁이</title>
+  </head>
+  <body>
+    <script>
+      function solution2(str) {
+        const answer = str.split("").map((v) => v === "A" ? "#" : v).join("")
+        return answer
+      }
+      console.log(solution2("BANANA"))
+
+      function solution1(str) {
+        const answer = str.replaceAll("A", "#")
+        return answer
+      }
+      console.log(solution1("BANANA"))
+    </script>
+  </body>
+</html>

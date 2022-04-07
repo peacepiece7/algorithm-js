@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>홀수</title>
+  </head>
+
+  <body>
+    <script>
+      function solution1(day, cars) {
+        let answer = 0;
+        for (let car of cars){
+          if(car % 10 !== day){
+            answer++
+          }
+        }
+        return answer;
+      }
+      console.log(solution1(3,[25,23,11,47,53,17,33]));
+    </script>
+  </body>
+</html>

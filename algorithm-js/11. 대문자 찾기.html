@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>일곱난쟁이</title>
+  </head>
+  <body>
+    <script>
+      function solution2(str) {
+        let answer = 0;
+        for(let x of str){
+          // if(65 <= x.charCodeAt(0) && x.charCodeAt(0) <=90) answer++
+          if(x===x.toUpperCase()) answer ++
+        }
+        return answer
+      }
+      console.log(solution2("KoreaTimeGood"))
+    </script>
+  </body>
+</html>

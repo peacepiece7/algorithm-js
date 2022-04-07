@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>세 수중 최솟값</title>
+  </head>
+
+  <body>
+    <script>
+      function sov(a, b, c) {
+        console.log(a, b, c, b > a + c);
+        if (a > b + c) return "NO1";
+        if (b > a + c) return "NO2";
+        if (c > a + b) return "NO3";
+        return "YES";
+      }
+      console.log(sov(6, 7, 11));
+      function sov2(a, b, c) {
+        let anwser, max;
+        let sum = a + b + c;
+        answer = "YES";
+        if (a > b) max = a;
+        else max = b;
+        if (c > max) max = c;
+
+        if (sum - max < max) answer = "NO";
+        return answer;
+      }
+      console.log(sov2(13, 33, 17));
+    </script>
+  </body>
+</html>

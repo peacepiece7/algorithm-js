@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      function solution2(str) {
+        let answer;
+
+        if(str.length % 2 ){
+          const idx = Math.floor((str.length/2) )
+          console.log(idx)
+          answer = str[idx]
+        }else{
+          const idx1 = Math.floor((str.length/2) -1)
+          const idx2 = Math.floor((str.length/2) )
+          answer = str[idx1]+str[idx2]
+        }
+        return answer
+      }
+      console.log(solution2("good"))
+
+      function solution3(str) {
+        let answer;
+        let mid = Math.floor(str.length/2)
+        if(str.length % 2 == 1) {
+          answer = str.substring(mid, mid+1)
+        }
+        else answer = str.substring(mid-1,mid +1)
+        return answer
+      }
+      console.log(solution3("study"))
+    </script>
+  </body>
+</html>

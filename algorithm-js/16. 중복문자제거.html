@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      function solution3(str) {
+        let answer = str.split("").filter((v,i) => str.indexOf(v) === i).join("")
+
+        return answer
+      }
+      console.log(solution3("keskkset"))
+    </script>
+  </body>
+</html>

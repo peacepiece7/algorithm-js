@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>세 수중 최솟값</title>
+  </head>
+
+  <body>
+    <script>
+      const arr = [5, 7, 1, 3, 2, 9, 11];
+
+      // solution1
+      function solution(arr) {
+        let answer = arr.reduce((pre, cur) => {
+          if (pre > cur) return cur;
+          else return pre;
+        });
+        return answer;
+      }
+      console.log(solution(arr));
+
+      // solution2
+      function solution2(arr) {
+        let answer,
+          min = Number.MAX_SAFE_INTEGER;
+
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] < min) min = arr[i];
+        }
+        answer = min;
+        return answer;
+      }
+      console.log(solution2(arr));
+
+      // solution3
+      function solution3(arr) {
+        console.log(Math.max(...arr)); // max
+        return Math.min(...arr);
+      }
+      console.log(solution3(arr)); // min
+
+      // solution4
+      function solution4(arr) {
+        const answer = Math.min.apply(null, arr);
+        return answer;
+      }
+      console.log(solution4(arr)); // min
+    </script>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>홀수</title>
+  </head>
+
+  <body>
+    <script>
+      function solution(arr) {
+        let answer, min;
+        let odds = [];
+        arr.map((v) => {
+          if (v % 2) {
+            odds.push(v);
+          }
+        });
+        answer = odds.reduce((prev, cur) => {
+          return prev + cur;
+        });
+
+        min = Math.min.apply(null, odds);
+        console.log(answer);
+        return min;
+      }
+      console.log(solution([12, 77, 38, 41, 53, 92, 85]));
+
+      function solution2(arr) {
+        let answer = [];
+        let sum = 0,
+          min = Number.MAX_SAFE_INTEGER;
+        for (let x of arr) {
+          if (x % 2 === 1) {
+            sum += x;
+            if (x < min) min = x;
+          }
+        }
+        answer.push(sum);
+        answer.push(min);
+        return answer;
+      }
+      console.log(solution2([12, 77, 38, 41, 53, 92, 85]));
+
+      function solution3(arr) {
+        let answer = [];
+        let sum = 0,
+          min = Number.MAX_SAFE_INTEGER;
+
+        arr.map((v) => {
+          if (v % 2 === 1) {
+            sum += v;
+            if (v < min) min = v;
+          }
+        });
+        answer.push(sum);
+        answer.push(min);
+        return answer;
+      }
+      console.log(solution3([12, 77, 38, 41, 53, 92, 85]));
+    </script>
+  </body>
+</html>

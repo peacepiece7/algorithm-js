@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      function solution2(str) {
+          let answer = str.split("").map((v) => v.toUpperCase()).join("")
+          return answer
+      }
+      console.log(solution2("ItistineTiStudy"))
+
+ 
+      function solution3(str) {
+          let answer =""
+          for(let x of str){
+              let num=x.charCodeAt()
+              if(num>=97 && num<=122){
+                  num -= 32
+                  answer += String.fromCharCode(num)
+              }else{
+                answer +=x
+              }
+          }
+          return answer
+      }
+      console.log(solution3("ItistineTiStudy"))
+    </script>
+  </body>
+</html>
