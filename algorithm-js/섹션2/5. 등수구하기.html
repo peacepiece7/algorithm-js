@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>등수구하기</title>
+  </head>
+
+  <body>
+    <script>
+      function sov(arr) {
+        const answer = [];
+        const oarr = Array.from(arr);
+        // const sarr = arr
+        //   .sort((a, b) => b - a)
+        //   .filter((v, i) => arr.indexOf(v) === i);
+        const sarr = arr.sort((a, b) => b - a);
+        for (let i = 0; i < oarr.length; i++) {
+          answer.push(sarr.indexOf(oarr[i]) + 1);
+        }
+        return answer;
+      }
+      console.log(sov([87, 89, 92, 92, 100, 76]));
+
+      function sov1(arr) {
+        const answer = Array.from({ length: arr.length }, () => 1);
+        for (let i = 0; i < arr.length; i++) {
+          for (let j = 0; j < arr.length; j++) {
+            if (arr[i] < arr[j]) answer[i] += 1;
+          }
+        }
+        return answer;
+      }
+      console.log(sov1([87, 89, 92, 92, 100, 76]));
+    </script>
+  </body>
+</html>

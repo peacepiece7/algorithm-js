@@ -1,0 +1,80 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>격자판 최대합</title>
+  </head>
+
+  <body>
+    <script>
+      const arr = [
+        [10, 13, 10, 12, 15],
+        [12, 39, 30, 23, 11],
+        [11, 25, 50, 53, 15],
+        [19, 27, 29, 37, 27],
+        [19, 13, 30, 13, 19],
+      ];
+      function sov(arr) {
+        let sum = [];
+        // row
+        arr.map((a) => {
+          sum.push(a.reduce((prev, curIdx) => prev + curIdx));
+        });
+        // column
+        for (let i = 0; i < arr.length; i++) {
+          sum.push(
+            arr.reduce((prev, curIdx) => {
+              return prev + curIdx[i];
+            }, 0)
+          );
+        }
+        // cross 5 ~ 0
+        let lastIdx = arr.length;
+        sum.push(
+          arr.reduce((prev, curIdx) => {
+            lastIdx--;
+            return prev + curIdx[lastIdx];
+          }, 0)
+        );
+        // cross 0 ~ 5
+        let firstIdx = -1;
+        sum.push(
+          arr.reduce((prev, curIdx) => {
+            firstIdx++;
+            return prev + curIdx[firstIdx];
+          }, 0)
+        );
+        return Math.max(...sum);
+      }
+      console.log(sov(arr));
+
+      const arr1 = [
+        [10, 13, 10, 12, 15],
+        [12, 39, 30, 23, 11],
+        [11, 25, 50, 53, 15],
+        [19, 27, 29, 37, 27],
+        [19, 13, 30, 13, 19],
+      ];
+      function sov1(arr) {
+        let answer = Number.MIN_SAFE_INTEGER;
+        let sum1 = (sum2 = 0);
+        // ! 배열[]행[]열
+        for (let i = 0; i < arr.length; i++) {
+          sum1 = sum2 = 0;
+          for (let j = 0; j < arr.length; j++) {
+            sum1 += arr[i][j];
+            sum2 += arr[j][i];
+          }
+          answer = Math.max(answer, sum1, sum2);
+        }
+        sum1 = sum2 = 0;
+        for (let i = 0; i < arr.length; i++) {
+          sum1 += arr[i][i];
+          sum2 += arr[i][arr.length - i - 1];
+        }
+        return Math.max(answer, sum1, sum2);
+      }
+
+      console.log(sov1(arr1));
+    </script>
+  </body>
+</html>

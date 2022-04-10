@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>점수 계산</title>
+  </head>
+
+  <body>
+    <script>
+      function sov(arr) {
+        let acc = 0;
+        const answer = arr.reduce((prev, idxVal) => {
+          if (idxVal === 0) {
+            acc = 0;
+            return prev;
+          } else {
+            acc += 1;
+            return prev + acc;
+          }
+        });
+        return answer;
+      }
+      console.log(sov([1, 0, 1, 1, 1, 0, 0, 1, 1, 0]));
+
+      function sov2(arr) {
+        let answer = 0,
+          cnt = 0;
+
+        for (let i of arr) {
+          if (i === 0) {
+            cnt = 0;
+          } else {
+            cnt += 1;
+            answer += cnt;
+          }
+        }
+        return answer;
+      }
+      console.log(sov2([1, 0, 1, 1, 1, 0, 0, 1, 1, 0]));
+
+      function solution(arr) {
+        let answer = 0;
+
+        const score = arr.join("").split(0);
+        for (const a of score) {
+          // score = [1 , '' , 111 , 11, '']
+          if (a) {
+            answer += (a.length * (a.length + 1)) / 2;
+          }
+        }
+
+        return answer;
+      }
+      console.log(solution([1, 0, 1, 1, 1, 0, 0, 1, 1, 0]));
+    </script>
+  </body>
+</html>

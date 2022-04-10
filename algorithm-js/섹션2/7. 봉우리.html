@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>격자판 최대합</title>
+  </head>
+
+  <body>
+    <script>
+      const arr = [
+        [5, 3, 7, 2, 3],
+        [3, 7, 1, 6, 1],
+        [7, 2, 5, 3, 4],
+        [4, 3, 6, 4, 1],
+        [8, 7, 3, 5, 2],
+      ];
+      function sov(arr) {
+        let highest = 0;
+        for (let i = 0; i < arr.length; i++) {
+          for (let j = 0; j < arr.length; j++) {
+            const left = arr[i - 1] ? arr[i - 1][j] : 0;
+            const right = arr[i + 1] ? arr[i + 1][j] : 0;
+            const top = arr[i][j + 1] ? arr[i][j + 1] : 0;
+            const bottom = arr[i][j - 1] ? arr[i][j - 1] : 0;
+            if (
+              arr[i][j] > left &&
+              arr[i][j] > right &&
+              arr[i][j] > top &&
+              arr[i][j] > bottom
+            ) {
+              highest += 1;
+            }
+          }
+        }
+        return highest;
+      }
+
+      console.log(sov(arr));
+    </script>
+  </body>
+</html>
