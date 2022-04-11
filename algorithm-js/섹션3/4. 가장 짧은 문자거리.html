@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>가장 짧은 문자거리</title>
+  </head>
+  <body>
+    <script>
+      const str = "teachermode e";
+      function sov(str) {
+        let answer;
+        let flag = str.split(" ")[1].trim();
+        str = str.split(" ")[0].trim();
+        let cnt = 0;
+        const left = str.split("").map((v) => {
+          if (v === flag) {
+            cnt = 0;
+            return cnt;
+          }
+          cnt++;
+          return cnt;
+        });
+        cnt = 0;
+        const right = str
+          .split("")
+          .reverse()
+          .map((v) => {
+            if (v === flag) {
+              cnt = 0;
+              return cnt;
+            }
+            cnt++;
+            return cnt;
+          })
+          .reverse();
+
+        right.forEach((v, i) => {
+          if (left[i] >= v) answer = answer ? `${answer} ${v}` : v;
+          else answer = answer ? `${answer} ${left[i]}` : left[i];
+        });
+        return answer;
+      }
+
+      console.log(sov(str));
+
+      function sov1(str) {
+        const answer = [];
+        const flag = str.split(" ")[1];
+        const arr = str.split(" ")[0];
+        let cnt = arr.length;
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] === flag) cnt = 0;
+          else cnt++;
+          answer.push(cnt);
+        }
+        cnt = 0;
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[arr.length - 1 - i] === flag) cnt = 0;
+          else cnt++;
+
+          if (answer[arr.length - 1 - i] > cnt)
+            answer[arr.length - 1 - i] = cnt;
+        }
+        return answer;
+      }
+      console.log(sov1(str));
+    </script>
+  </body>
+</html>

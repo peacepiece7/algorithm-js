@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>숫자만 추출</title>
+  </head>
+
+  <body>
+    <script>
+      const str = "g0en2T0s8eSoft";
+      function sov(str) {
+        let answer = parseInt(str.replace(/[^0-9]/g, ""));
+        return answer;
+      }
+      console.log(sov(str));
+
+      const str1 = "g0en2T0s8eSoft";
+      function sov1(str) {
+        let answer = parseInt(
+          str
+            .split("")
+            .filter((v) => {
+              if (!isNaN(v)) return v;
+            })
+            .join("")
+        );
+        return answer;
+      }
+      console.log(sov1(str1));
+
+      const str2 = "g0en2T0s8eSoft";
+      function sov2(str) {
+        let answer = parseInt(
+          str
+            .split("")
+            .filter((v) => {
+              if (48 <= v.charCodeAt() && v.charCodeAt() <= 57) return v;
+            })
+            .join("")
+        );
+        return answer;
+      }
+      console.log(sov2(str2));
+
+      const str3 = "g0en2T0s8eSoft";
+      function sov3(str) {
+        let answer = 0;
+        str.split("").filter((v) => {
+          if (!isNaN(v)) answer = answer * 10 + Number(v);
+        });
+
+        return answer;
+      }
+      console.log(sov3(str3));
+    </script>
+  </body>
+</html>

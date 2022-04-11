@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>유효한 펠린드롬</title>
+  </head>
+
+  <body>
+    <script>
+      const str = "found7,  time:  study;  Yduts;  emit,  7Dnuof";
+      function sov(str) {
+        const lcStr = str.toLowerCase();
+        const len = Math.floor(lcStr.length / 2);
+        let answer = "YES";
+        for (let i = 0; i < len; i++) {
+          const com1 = lcStr[i].charCodeAt();
+          const com2 = lcStr[lcStr.length - i - 1].charCodeAt();
+          if (97 <= com1 && com1 <= 122) {
+            if (com1 !== com2) answer = "NO";
+          }
+        }
+        return answer;
+      }
+      console.log(sov(str));
+
+      const str1 = "found7,  time:  study;  Yduts;  emit,  7Dnuof";
+      function sov1(str) {
+        let answer = "YES";
+
+        const lcStr = str.toLowerCase().replace(/[^a-z]/g, "");
+        if (lcStr !== lcStr.split("").reverse().join("")) answer = "NO";
+        return answer;
+      }
+      console.log(sov1(str1));
+    </script>
+  </body>
+</html>

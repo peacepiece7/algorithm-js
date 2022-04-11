@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>회문문자열</title>
+  </head>
+
+  <body>
+    <script>
+      const str = "oggoggo";
+      function sov(str) {
+        let lstr = str.toLowerCase();
+        const cnt = Math.floor(lstr.length / 2); // rounding 할 필요 없음..! 근데 강사님도 하네
+        let answer = "YES";
+        for (let i = 0; i < cnt; i++) {
+          if (lstr[i] !== lstr[lstr.length - 1 - i]) {
+            answer = "NO";
+          }
+        }
+        return answer;
+      }
+      console.log(sov(str));
+
+      const str1 = "goog";
+      function sov1(str) {
+        str = str.toLowerCase();
+        let answer = "YES";
+
+        if (str !== str.split("").reverse().join("")) answer = "NO";
+        return answer;
+      }
+      console.log(sov1(str1));
+    </script>
+  </body>
+</html>
