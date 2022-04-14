@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>문자열 압축</title>
+  </head>
+  <body>
+    <script>
+      let str = "KKHSSSSSSSEE";
+      function sov(str) {
+        let acc = 1;
+        let prev = str[0];
+        let answer = "";
+        for (let i = 1; i < str.length + 1; i++) {
+          console.log("str[i]", str[i]); // str[i] undifined last index
+          if (prev === str[i]) acc++;
+          else {
+            if (acc !== 1) answer += `${prev}${acc}`;
+            if (acc === 1) answer += prev;
+            acc = 1;
+          }
+          prev = str[i];
+        }
+        return answer;
+      }
+      console.log(sov(str));
+
+      function sov1(str) {
+        let acc = 1;
+        let answer = "";
+        const arr = str.split("");
+        arr.push(null);
+        arr.reduce((prev, curIdx) => {
+          if (prev === curIdx) acc++;
+          else {
+            answer += prev;
+            if (acc > 1) answer += String(acc);
+            acc = 1;
+          }
+
+          return curIdx;
+        });
+        return answer;
+      }
+      console.log(sov1(str));
+    </script>
+  </body>
+</html>

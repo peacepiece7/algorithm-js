@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>자릿수의 함</title>
+  </head>
+
+  <body>
+    <script>
+      const arr = [128, 460, 603, 40, 521, 137, 123];
+      function sov(arr) {
+        let answer = null;
+        arr.push(0);
+        for (let i = 0; i < arr.length - 1; i++) {
+          const cur = arr[i]
+            .toString()
+            .split("")
+            .reduce((prev, curIdx) => prev + curIdx);
+          const next = arr[i + 1]
+            .toString()
+            .split("")
+            .reduce((prev, curIdx) => prev + curIdx);
+
+          if (cur > next) {
+            answer = cur;
+          } else if (cur < next) {
+            answer = next;
+          }
+          if (cur === next) {
+            if (arr[i].length > arr[i + 1].length) {
+              answer = cur;
+            } else {
+              answer = next;
+            }
+          }
+        }
+
+        return answer;
+      }
+      console.log(sov(arr));
+    </script>
+  </body>
+</html>
