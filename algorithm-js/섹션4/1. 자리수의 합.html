@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>자리수의 합</title>
+  </head>
+  <body>
+    <script>
+      const arr = [902, 128, 402, 603, 1, 521, 137, 123];
+      function sov(arr) {
+        let answer;
+        let max = Number.MIN_SAFE_INTEGER;
+        for (let i = 0; i < arr.length; i++) {
+          let tmp = arr[i];
+          let sum = 0;
+          while (tmp) {
+            sum += tmp % 10;
+            tmp = Math.floor(tmp / 10);
+          }
+          if (max < sum) {
+            max = sum;
+            answer = arr[i];
+          } else if (max === sum) {
+            if (arr[i] > answer) answer = x;
+          }
+        }
+
+        return answer;
+      }
+      // console.log(sov(arr));
+
+      const ar1r = [902, 128, 402, 603, 100, 521, 137, 123];
+      function so1v(arr) {
+        let answer;
+        let max = Number.MIN_SAFE_INTEGER;
+        for (let i = 0; i < arr.length; i++) {
+          const tmp = arr[i]
+            .toString()
+            .split("")
+            .reduce((p, c) => {
+              return parseInt(p) + parseInt(c);
+            });
+          if (tmp > max) {
+            answer = arr[i];
+            max = tmp;
+          }
+          if (tmp === max) {
+            if (arr[i] > answer) {
+              answer = arr[i];
+            }
+          }
+        }
+        return answer;
+      }
+      console.log(so1v(ar1r));
+    </script>
+  </body>
+</html>

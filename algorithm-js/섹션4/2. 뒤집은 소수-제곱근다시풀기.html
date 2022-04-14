@@ -1,0 +1,111 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>뒤집은 소수</title>
+  </head>
+  <body>
+    <script>
+      const arr = [32, 55, 62, 20, 250, 370, 200, 30, 100];
+      function sov(arr) {
+        const answer = [];
+        for (let x of arr) {
+          const tmp = Number(x.toString().split("").reverse().join(""));
+          if (tmp === 1 || tmp === 2 || tmp === 3 || tmp === 5) {
+            answer.push(tmp);
+          } else {
+            if (tmp % 2 !== 0 && (tmp % 3 !== 0) & (tmp % 5 !== 0)) {
+              answer.push(tmp);
+            }
+          }
+        }
+        return answer;
+      }
+      console.log(sov(arr));
+
+      // isPrime parseInt(Math.sqrt(num)) or Math.floor(num/2)
+      const arr1 = [32, 55, 62, 20, 250, 370, 200, 30, 100];
+      function sov1(arr) {
+        const answer = [];
+        for (let x of arr) {
+          let reStr = "";
+          while (x) {
+            reStr += `${x % 10}`;
+            x = Math.floor(x / 10);
+          }
+          const reInt = parseInt(reStr);
+          if (reInt === 1 || reInt === 2 || reInt === 3 || reInt === 5) {
+            answer.push(reInt);
+          } else {
+            if (reInt % 2 !== 0 && reInt % 3 !== 0 && reInt % 5 !== 0) {
+              answer.push(reInt);
+            }
+          }
+        }
+        return answer;
+      }
+      console.log(sov1(arr1));
+    </script>
+  </body>
+</html>
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 에라토스테네스의 체 or 제곱근까지 for문 돌리기
+      const arr2 = [32, 55, 62, 20, 250, 370, 200, 30, 100];
+      function solution(n) {
+        let count = 0;
+        let ch = Array.from({ length: n + 1 }, () => 0);
+        for (let i = 2; i <= n; i++) {
+          if (ch[i] === 0) {
+            count++;
+            for (let j = i; j <= n; j += i) {
+              ch[j] = 1;
+            }
+          }
+        }
+        return count;
+      }
+      console.log(solution(arr2));
+      function psearch(n) {
+        let p = 1;
+        while (p * p <= n) {
+          p += 1;
+        }
+        return p;
+      }
+
+      function solution(num) {
+        let answer = [];
+        for (let i = 0; i < num.length; i++) {
+          let now = parseInt(num[i].toString().split("").reverse().join(""));
+          // 2 = 소수, 1 = 소수아님
+          if (now === 2) {
+            answer.push(now);
+          } else if (now === 1) {
+            continue;
+          } else {
+            let p = psearch(now);
+            let val = 0;
+            for (let j = 2; j <= p; j++) {
+              if (now % j === 0) {
+                val += 1;
+              }
+            }
+            if (val === 0) {
+              answer.push(now);
+            }
+          }
+        }
+        return answer;
+      }
+
+      let arr5 = [32, 55, 62, 20, 250, 370, 200, 30, 100, 5, 7, 6];
+      console.log(solution(arr5));
+    </script>
+  </body>
+</html>
