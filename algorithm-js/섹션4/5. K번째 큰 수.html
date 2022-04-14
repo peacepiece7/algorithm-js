@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>k번째 큰 수</title>
+  </head>
+  <body>
+    <h1>h</h1>
+    <script>
+      // set (중복이 제거되는 자료구조)
+      const arr = [13, 15, 34, 23, 45, 65, 33, 11, 26, 42];
+      function sov(k, arr) {
+        let answer;
+        let list = [];
+        for (let i = 0; i < arr.length; i++) {
+          for (let j = i + 1; j < arr.length; j++) {
+            for (let k = j + 1; k < arr.length; k++) {
+              list.push(arr[i] + arr[j] + arr[k]);
+            }
+          }
+        }
+        list.sort((a, b) => b - a);
+        list = list.filter((v, i) => list.indexOf(v) === i);
+        console.log(list.length);
+        console.log(list);
+        answer = list[k - 1];
+        return answer;
+      }
+      console.log(sov(3, arr));
+
+      // set (중복이 제거되는 자료구조)
+      const arr2 = [13, 15, 34, 23, 45, 65, 33, 11, 26, 42];
+      function sov1(k, arr) {
+        let answer;
+        let tmp = new Set();
+        // arr.length - 2, 1하는게 맞지만, 안 해도 k < arr.length 조건 만족 못해서 k for문 안으로 들어가지못함, 해도 좋음
+        for (let i = 0; i < arr.length - 2; i++) {
+          for (let j = i + 1; j < arr.length - 1; j++) {
+            for (let k = j + 1; k < arr.length; k++) {
+              tmp.add(arr[i] + arr[j] + arr[k]);
+            }
+          }
+        }
+        console.log(tmp);
+        let a = Array.from(tmp).sort((a, b) => b - a);
+        answer = a[k - 1];
+        return answer;
+      }
+      console.log(sov1(3, arr));
+    </script>
+  </body>
+</html>
