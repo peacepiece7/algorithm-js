@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      const arr1 = [1, 2, 1, 3, 1, 1, 1, 2];
+      // 이렇게 풀면 그냥 2중 for문임 ㅠㅠ
+      function sov(n, arr) {
+        let lt = 0;
+        let rt = 1;
+        let answer = 0;
+        while (arr.length > rt) {
+          let sum = 0;
+          for (let i = 0; i < rt; i++) {
+            if (i >= lt) sum += arr[i];
+          }
+          if (sum === n) {
+            answer++;
+            lt++;
+          } else if (sum > n) lt++;
+          else rt++;
+        }
+        return answer;
+      }
+      console.log(sov(6, arr1));
+
+      const arr2 = [1, 2, 1, 3, 1, 1, 1, 2];
+      function sov1(n, arr) {
+        let answer = 0;
+        let lt = 0;
+        let sum = 0;
+        for (let rt = 0; rt < arr.length; rt++) {
+          sum += arr[rt];
+          if (sum === n) answer++;
+          while (sum >= n) {
+            sum -= arr[lt++];
+            if (sum === n) answer++;
+          }
+        }
+        return answer;
+      }
+      console.log(sov1(6, arr2));
+    </script>
+  </body>
+</html>
