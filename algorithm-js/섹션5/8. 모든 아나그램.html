@@ -7,35 +7,57 @@
     <script>
       const str = "bacaAacba";
       const str1 = "abc";
+
+      function compareMaps(smap, tmap) {
+        let isSame = true;
+
+        if (smap.size === tmap.size) {
+          Array.from(smap).map((v) => {
+            if (!tmap.has(v[0])) isSame = false;
+          });
+          return isSame;
+        } else {
+          return false;
+        }
+      }
+
       function sov(str1, str2) {
-        let answer;
-        let T = str1.split("");
-        let S = str2.split("");
-        const Smap = new Map();
-        const Tmap = new Map();
+        // abc
+        // bacaAacba
+        let answer = 0;
+        const S = str2.split("");
+        const T = str1.split("");
+        const smap = new Map();
+        const tmap = new Map();
+
         let lt = 0;
 
-        for (let i of S) {
-          if (Smap.has(i)) Smap.set(i, Smap.get(i));
-          else Smap.set(i, 1);
+        for (let i = 0; i < S.length; i++) {
+          if (smap.has(S[i])) smap.set(S[i], smap.get(S[i]) + 1);
+          else smap.set(S[i], 1);
         }
 
-        for (let j = 0; j < Smap.size; j++) {
-          if (Tmap.has(T[j])) Tmap.set(T[j], Tmap.get(T[j]));
-          else Tmap.set(T[j], 1);
+        // 다음엔 for문 두 개 만들자.. 너무 헷갈리네
+        for (let rt = 0; rt < T.length; rt++) {
+          if (tmap.has(T[rt])) tmap.set(T[rt], tmap.get(T[rt]) + 1);
+          else tmap.set(T[rt], 1);
+          if (rt < smap.size) {
+          } else {
+            if (tmap.has(T[lt]) && tmap.get(T[lt]) > 1) {
+              tmap.set(T[lt], tmap.get(T[lt]) - 1);
+            } else {
+              tmap.delete(T[lt]);
+            }
+            lt++;
+          }
+
+          const result = compareMaps(smap, tmap);
+
+          result && answer++;
         }
 
-        const Tarr = Array.from(Tmap);
-        console.log(Tarr);
-        // tmpa을 Arrayfrom하고 idx를 Smap과 비교
-
-        //lt를 delete하고, rt++함 (무조건)
-        // 그리고 그 안에서 while(S.size)돌면서 전부 같으면 asnwer++함
-        for (let k = Smap.size - 1; k < T.length; k++) {}
         return answer;
       }
-      // 커밋 테스트용 주석
-      // 커밋 테스트2
 
       console.log(sov(str, str1));
     </script>
