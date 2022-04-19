@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      const str = "bacaAacba";
+      const str1 = "abc";
+      function sov(str1, str2) {
+        let answer;
+        let T = str1.split("");
+        let S = str2.split("");
+        const Smap = new Map();
+        const Tmap = new Map();
+        let lt = 0;
+
+        for (let i of S) {
+          if (Smap.has(i)) Smap.set(i, Smap.get(i));
+          else Smap.set(i, 1);
+        }
+
+        for (let j = 0; j < Smap.size; j++) {
+          if (Tmap.has(T[j])) Tmap.set(T[j], Tmap.get(T[j]));
+          else Tmap.set(T[j], 1);
+        }
+
+        const Tarr = Array.from(Tmap);
+        console.log(Tarr);
+        // tmpa을 Arrayfrom하고 idx를 Smap과 비교
+
+        //lt를 delete하고, rt++함 (무조건)
+        // 그리고 그 안에서 while(S.size)돌면서 전부 같으면 asnwer++함
+        for (let k = Smap.size - 1; k < T.length; k++) {}
+        return answer;
+      }
+
+      console.log(sov(str, str1));
+    </script>
+  </body>
+</html>
