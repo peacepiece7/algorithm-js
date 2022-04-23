@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      const arr1 = [12, 15, 11, 20, 25, 10, 20, 19, 13, 15];
+      function sov(n, arr) {
+        let answer = 0;
+        for (let i = 0; i < arr.length; i++) {
+          let next = 0;
+          let p = i;
+          if (i <= arr.length - n) {
+            for (let j = 0; j < n; j++) {
+              next += arr[p++];
+            }
+          }
+          if (answer < next) answer = next;
+        }
+        return answer;
+      }
+      console.log(sov(3, arr1));
+      function sov1(n, arr) {
+        let answer = 0;
+        let sum = 0;
+        for (let i = 0; i < arr.length; i++) {
+          sum += arr[i];
+          if (i >= n) sum -= arr[i - n];
+          answer = Math.max(answer, sum);
+        }
+        return answer;
+      }
+
+      console.log(sov1(3, arr1));
+    </script>
+  </body>
+</html>

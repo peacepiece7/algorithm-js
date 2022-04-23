@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      const arr1 = [12, 15, 11, 20, 25, 10, 20, 19, 13, 15];
+      function sov(n, arr) {
+        let answer = 0;
+        for (let i = 0; i < arr.length; i++) {
+          let next = 0;
+          let p = i;
+          if (i <= arr.length - n) {
+            for (let j = 0; j < n; j++) {
+              next += arr[p++];
+            }
+          }
+          if (answer < next) answer = next;
+        }
+        return answer;
+      }
+      console.log(sov(3, arr1));
+      const str1 = "AbaAeCe";
+      const str2 = "baeeACA";
+      const str3 = "abaCC";
+      const str4 = "Caaab";
+
+      function sov3(str1, str2) {
+        let answer = true;
+        const sH = new Map();
+        const arr1 = str1.split("");
+        const arr2 = str2.split("");
+
+        for (let x of arr1) {
+          if (sH.has(x)) sH.set(x, sH.get(x) + 1);
+          else sH.set(x, 1);
+        }
+
+        for (let x of arr2) {
+          console.log(sH.get(x));
+          if (sH.has(x) && sH.get(x) === 0) answer = false;
+          else sH.set(x, sH.get(x) - 1);
+        }
+        return answer;
+      }
+      console.log(sov3(str3, str4));
+
+      console.log("---");
+
+      const s = "bacaAacba";
+      const t = "abc";
+      function solution1(s, t) {
+        const S = s.split("");
+        const T = t.split("");
+        let answer = [];
+        let p1 = 0;
+        let p2 = T.length;
+
+        let sH = new Map();
+
+        for (let i = 0; i < T.length; i++) {
+          if (sH.has(T[i])) sH.set(T[i], sH.get(T[i]) + 1);
+          else sH.set(T[i], 1);
+        }
+
+        for (let j = T.length; j < S.Length; j++) {
+          // j ~ p2까지 비교
+          const isH = new Map(sH);
+          for (let k = p1; k < p2; k++) {
+            if (isH.has(S[k])) isH.set(S[k], isH.get(S[k] - 1));
+          }
+        }
+      }
+
+      console.log(solution1(s, t));
+    </script>
+  </body>
+</html>

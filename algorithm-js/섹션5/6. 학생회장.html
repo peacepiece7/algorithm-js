@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      const arr1 = [12, 15, 11, 20, 25, 10, 20, 19, 13, 15];
+      function sov(n, arr) {
+        let answer = 0;
+        for (let i = 0; i < arr.length; i++) {
+          let next = 0;
+          let p = i;
+          if (i <= arr.length - n) {
+            for (let j = 0; j < n; j++) {
+              next += arr[p++];
+            }
+          }
+          if (answer < next) answer = next;
+        }
+        return answer;
+      }
+      console.log(sov(3, arr1));
+      const str = "BACBACCACCBDEDE";
+      function sov1(str) {
+        let answer = "";
+        let sum = 0;
+        const map = new Map();
+        const arr = str.split("");
+        for (let e of arr) {
+          if (!map.has(e)) map.set(e, 1);
+          else map.set(e, map.get(e) + 1);
+        }
+        for (let [key, value] of map) {
+          if (sum < value) {
+            sum = value;
+            answer = key;
+          }
+        }
+
+        return answer;
+      }
+
+      console.log(sov1(str));
+    </script>
+  </body>
+</html>
