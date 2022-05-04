@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      const str = "(A(BC)D)EF(G(H)(IJ)K)LM(N)";
+      function solution(s) {
+        const answer = [];
+        const arr = str.split("");
+        const stack = [];
+
+        for (let rt = 0; rt < arr.length; rt++) {
+          if (arr[rt] === "(") {
+            while (true) {
+              if (arr[rt] === "(") stack.push(arr[rt]);
+              else if (arr[rt] === ")") stack.pop();
+              if (stack.length === 0) break;
+              else rt++;
+            }
+          } else answer.push(arr[rt]);
+        }
+        return answer;
+      }
+      console.log(solution(str).join(""));
+    </script>
+  </body>
+</html>

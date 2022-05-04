@@ -10,8 +10,8 @@
 
       function compareMaps(smap, tmap) {
         let isSame = true;
-
         if (smap.size === tmap.size) {
+          // for of 사용가능. return false로 끝내기0
           Array.from(smap).map((v) => {
             if (!tmap.has(v[0])) isSame = false;
           });
@@ -20,7 +20,6 @@
           return false;
         }
       }
-
       function sov(str1, str2) {
         // abc
         // bacaAacba
@@ -31,12 +30,10 @@
         const tmap = new Map();
 
         let lt = 0;
-
         for (let i = 0; i < S.length; i++) {
           if (smap.has(S[i])) smap.set(S[i], smap.get(S[i]) + 1);
           else smap.set(S[i], 1);
         }
-
         // 다음엔 for문 두 개 만들자.. 너무 헷갈리네
         for (let rt = 0; rt < T.length; rt++) {
           if (tmap.has(T[rt])) tmap.set(T[rt], tmap.get(T[rt]) + 1);
@@ -50,16 +47,28 @@
             }
             lt++;
           }
-
           const result = compareMaps(smap, tmap);
-
           result && answer++;
         }
-
         return answer;
       }
-
       console.log(sov(str, str1));
+
+      function solution(s, t) {
+        let answer = 0;
+        let tH = new Map();
+        let sH = new Map();
+        for (let x of t) {
+          if (tH.has(x)) tH.set(x, tH.get(x) + 1);
+          else tH.set(x, 1);
+        }
+        // 미리 s 두 개 세팅
+        let len = t.length - 1;
+        for (let i = 0; i < len; i++) {
+          if (sH.has(s[i])) sH.set(s[i], sH.get(s[i]) + 1);
+          else sH.set(s[i], 1);
+        }
+      }
     </script>
   </body>
 </html>

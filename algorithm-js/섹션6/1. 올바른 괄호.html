@@ -5,12 +5,38 @@
   </head>
   <body>
     <script>
-      const str = "";
-      function solution() {
-        let answer;
-        return answer;
+      const str = "(()(()))(()";
+      function solution(str) {
+        let answer = [];
+        let a = "YES";
+        let arr = str.split("");
+        for (let x of arr) {
+          console.log(answer.length);
+          if (x === "(") answer.push(x);
+          else if (answer.length === 0) {
+            a = "NO";
+            break;
+          }
+          if (answer.length > 0) a = "NO";
+        }
+        return a;
       }
       console.log(solution(str));
+
+      const str1 = "()(())((()))";
+      function solution(str) {
+        let arr = [];
+        let answer = "YES";
+        for (let s of str.split("")) {
+          if (s === "(") arr.push(s);
+          else if (arr.length) arr.pop();
+          else answer = "NO";
+        }
+        if (arr.length) answer = "NO";
+        return answer;
+      }
+
+      console.log(solution(str1));
     </script>
   </body>
 </html>
