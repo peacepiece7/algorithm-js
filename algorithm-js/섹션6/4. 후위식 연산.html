@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      function soultion(str) {
+        const arr = str.split("");
+        let stack = [];
+        for (let x of arr) {
+          if (typeof Number(x) === "number" && !Number.isNaN(Number(x))) stack.push(parseInt(x));
+          else {
+            const b = stack[stack.length - 1];
+            const a = stack[stack.length - 2];
+            if (x === "*") stack.unshift(a * b);
+            else if (x === "+") stack.unshift(a + b);
+            else if (x === "-") stack.unshift(a - b);
+            else if (x === "%") stack.unshift(a % b);
+            else if (x === "/") stack.unshift(a / b);
+            stack.pop();
+            stack.pop();
+          }
+        }
+
+        return stack[0];
+      }
+      const str = "352+*9-";
+      //   console.log(soultion(str));
+
+      function solution2(str) {
+        const arr = str.split("");
+        const stack = [];
+        for (let x of arr) {
+          if (isNaN(x)) {
+            const b = stack.pop();
+            const a = stack.pop();
+            if (x === "*") stack.push(a * b);
+            else if (x === "+") stack.push(a + b);
+            else if (x === "-") stack.push(a - b);
+            else if (x === "%") stack.push(a % b);
+            else if (x === "/") stack.push(a / b);
+          } else {
+            stack.push(parseInt(x));
+          }
+        }
+      }
+      console.log(solution2(str));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      const N = "CBA";
+      const plan = "CBDGE";
+      function solution(n, plan) {
+        const narr = n.split("");
+        const parr = plan.split("");
+
+        for (let i = 0; i < parr.length; i++) {
+          if (narr[0] === parr[i]) narr.shift();
+          if (!narr.length) break;
+        }
+        if (!narr.length) answer = "YES";
+        else answer = "NO";
+
+        return answer;
+      }
+      console.log(solution(N, plan));
+    </script>
+  </body>
+</html>

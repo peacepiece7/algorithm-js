@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      const K = 3;
+      const N = 8;
+      function solution(n, k) {
+        let answer;
+        const princes = Array.from({ length: n }, (v, i) => i + 1);
+        while (princes.length) {
+          for (let i = 1; i < K; i++) princes.push(princes.shift());
+          princes.shift();
+          if (princes.length === 1) answer = princes.shift();
+        }
+        return answer;
+      }
+      console.log(solution(N, K));
+    </script>
+  </body>
+</html>

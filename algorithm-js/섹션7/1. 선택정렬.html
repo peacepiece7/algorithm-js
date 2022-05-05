@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      const str = "";
+
+      function solution(str) {
+        let answer;
+        const arr = [13, 5, 11, 7, 23, 15];
+
+        for (let i = 0; i < arr.length; i++) {
+          let idx = i;
+          for (let j = i + 1; j < arr.length; j++) {
+            if (arr[j] < arr[idx]) idx = j;
+          }
+          [arr[idx], arr[j]] = [arr[j], arr[idx]];
+        }
+        console.log(arr);
+        return answer;
+      }
+      console.log(solution(str));
+    </script>
+  </body>
+</html>

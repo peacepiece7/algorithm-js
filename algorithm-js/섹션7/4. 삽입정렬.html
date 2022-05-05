@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      const str = "11 7 5 6 10 9";
+      function solution(str) {
+        const arr = str.split(" ").map((v) => parseInt(v));
+        let answer = arr;
+        for (let i = 1; i < arr.length; i++) {
+          let tmp = arr[i];
+          for (let j = i - 1; j >= 0; j--) {
+            arr[j + 1] = arr[j];
+            if (arr[j] < tmp) {
+              arr[j + 1] = tmp;
+              break;
+            }
+            if (j === 0) arr[j] = tmp;
+          }
+        }
+        return answer;
+      }
+      console.log(solution(str));
+
+      const str2 = "11 7 5 6 10 9";
+
+      function solution2(str) {
+        const arr = str.split(" ").map((v) => parseInt(v));
+        let answer = arr;
+        for (let i = 1; i < arr.length; i++) {
+          let tmp = arr[i];
+          let j;
+          for (j = i - 1; j >= 0; j--) {
+            if (arr[j] > tmp) arr[j + 1] = arr[j];
+            else break;
+          }
+          arr[j + 1] = tmp;
+        }
+        return answer;
+      }
+      console.log(solution2(str2));
+    </script>
+  </body>
+</html>
