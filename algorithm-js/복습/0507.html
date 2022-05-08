@@ -5,12 +5,14 @@
   </head>
   <body>
     <script>
-      const arr = [];
-      function solution(arr) {
+      const str = "1 2 3 2 6 2 3 5 7";
+      function solution(str) {
+        const arr = str.split(" ").map((v) => parseInt(v));
+
         let answer;
         return answer;
       }
-      console.log(solution(arr));
+      console.log(solution(str));
     </script>
   </body>
 </html>

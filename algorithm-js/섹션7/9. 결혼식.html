@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      const arr = [
+        [14, 18],
+        [12, 15],
+        [15, 20],
+        [20, 30],
+        [5, 14],
+      ];
+      function solution_(arr) {
+        let max = 0;
+        arr.sort((a, b) => {
+          if (a[1] === b[1]) return a[0] - b[0];
+          else return a[1] - b[1];
+        });
+        for (let i = 0; i < arr.length - 1; i++) {
+          let et = arr[i][1];
+          for (let j = i + 1; j < arr.length; j++) {
+            let tmp = 1;
+            if (et > arr[j][0]) tmp++;
+            max = Math.max(max, tmp);
+          }
+        }
+        return max;
+      }
+      console.log(solution_(arr));
+
+      // 배열 인덱스를 시간으로 표기하지 못하게 만들어야 했었다?
+      // [4 , "s"], [14,"e"], [14,"s"] , [16, "e"]... 방식으로 문제 풀어보기
+      const solution = (...arr) => {
+        const sch = [...arr].sort((a, b) => (a[0] === b[0] ? a[1] - b[1] : a[0] - b[0]));
+        let ing = [];
+        let idx = 0;
+        let res = 0;
+
+        for (let i = 0; i <= 72; i++) {
+          if (idx >= sch.length) break;
+          if (sch[idx][0] === i) {
+            ing.push(sch[idx]);
+            idx++;
+          }
+
+          ing = ing.filter(([s, e]) => e !== i);
+          res = res > ing.length ? res : ing.length;
+        }
+
+        return res;
+      };
+    </script>
+  </body>
+</html>

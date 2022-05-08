@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      //        // 120 130 130 150 150 150 두 값을 비교해야 함
+      const str = "120 130 150 150 130 150";
+
+      function answer(str) {
+        const arr = str.split(" ").map((v) => parseInt(v));
+        const sortedArr = Array.from(arr).sort((a, b) => a - b);
+        let me, pair;
+        for (let i = 0; i <= arr.length; i++) {
+          if (arr[i] > sortedArr[i]) me = i + 1;
+          if (arr[i] < sortedArr[i]) pair = i + 1;
+        }
+
+        return [me, pair];
+      }
+
+      console.log(answer(str));
+      function solution(str) {
+        const arr = str.split(" ").map((v) => parseInt(v));
+        let me = null;
+        let pair = null;
+        for (let i = 0; i < arr.length - 1; i++) {
+          if (arr[i] >= arr[i + 1]) {
+            me = i;
+            for (let j = me; j < arr.length - 1; j++) {
+              if (arr[j] >= arr[j + 1]) [arr[j + 1], arr[j]] = [arr[j], arr[j + 1]];
+              else {
+                pair = j;
+                break;
+              }
+            }
+            break;
+          }
+        }
+        return [me + 1, pair + 1];
+      }
+    </script>
+  </body>
+</html>
