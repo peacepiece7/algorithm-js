@@ -12,6 +12,32 @@
         [20, 30],
         [5, 14],
       ];
+
+      function sov2(...arr) {
+        let max = 0;
+
+        let seq = arr[0].sort((a, b) => {
+          if (a[1] === b[1]) return a[0] - b[0];
+          else return a[1] - b[1];
+        });
+        let acc = 1;
+        outTime = seq[0][1];
+        for (let i = 1; i < seq.length; i++) {
+          console.log("seq[i][0], outTime ", seq[i][0], outTime);
+          if (seq[i][0] < outTime) acc++;
+          else {
+            outTime = seq[i][1];
+            if (acc > 0) acc--;
+          }
+
+          max = Math.max(max, acc);
+          console.log(max, acc);
+        }
+        return max;
+      }
+
+      console.log(sov2(arr));
+
       function solution_(arr) {
         let max = 0;
         arr.sort((a, b) => {
@@ -28,7 +54,6 @@
         }
         return max;
       }
-      console.log(solution_(arr));
 
       // 배열 인덱스를 시간으로 표기하지 못하게 만들어야 했었다?
       // [4 , "s"], [14,"e"], [14,"s"] , [16, "e"]... 방식으로 문제 풀어보기
@@ -48,8 +73,6 @@
           ing = ing.filter(([s, e]) => e !== i);
           res = res > ing.length ? res : ing.length;
         }
-
-        return res;
       };
     </script>
   </body>
