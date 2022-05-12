@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      const arr = [23, 87, 65, 12, 57, 32, 99, 81];
+      // 이분검색 O(logn)임 for문이 O(n)인데
+      function solution(arr, t) {
+        arr.sort((a, b) => a - b);
+        let answer = arr.indexOf(t);
+        return answer + 1;
+      }
+      console.log(solution(arr, 32));
+    </script>
+  </body>
+</html>
