@@ -12,7 +12,26 @@
         let answer = arr.indexOf(t);
         return answer + 1;
       }
-      console.log(solution(arr, 32));
+      // console.log(solution(arr, 32));
+
+      function sov(arr, target) {
+        let answer;
+        const sortedArr = arr.sort((a, b) => a - b);
+        let lt = 0;
+        let rt = arr.length - 1;
+        while (true) {
+          let mid = parseInt((lt + rt) / 2);
+          if (sortedArr[mid] === target) {
+            answer = mid;
+            break;
+          } else if (sortedArr[mid] < target) lt = mid - 1;
+          else rt = mid + 1;
+        }
+
+        return ++answer;
+      }
+
+      console.log("answer : ", sov(arr, 32));
     </script>
   </body>
 </html>
