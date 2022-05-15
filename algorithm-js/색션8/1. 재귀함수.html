@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      function sov(v) {
+        async function DFS(L) {
+          try {
+            if (L === 0) return;
+            DFS(L - 1);
+            console.log(L);
+          } catch (e) {
+            console.error(e);
+          }
+        }
+
+        DFS(v);
+      }
+      sov(3);
+    </script>
+  </body>
+</html>

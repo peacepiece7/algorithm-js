@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      const input = 11;
+      function solution(input) {
+        let answer = [];
+        function DFS(v) {
+          if (v === 0) return;
+          else {
+            let quotient = Math.floor(v / 2);
+            let remainder = v % 2;
+
+            DFS(quotient);
+            answer.push(remainder);
+          }
+        }
+
+        DFS(input);
+
+        return answer.join("");
+      }
+      console.log(solution(input));
+    </script>
+  </body>
+</html>

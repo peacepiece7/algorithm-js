@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      function counter(mid, srtArr) {
+        let cnt = 1;
+        let ep = srtArr[0];
+        for (let i = 1; i < srtArr.length; i++) {
+          if (srtArr[i] - ep >= mid) {
+            ep = srtArr[i];
+            cnt++;
+          }
+        }
+        return cnt;
+      }
+
+      function solution(arr, t) {
+        let answer;
+        const srtArr = arr.sort((a, b) => a - b);
+        let lt = 1;
+        let rt = srtArr[srtArr.length - 1];
+        while (lt <= rt) {
+          let mid = parseInt((lt + rt) / 2);
+          console.log("      mid :", mid, "lt :", lt, "rt :", rt);
+          console.log("counter :", counter(mid, t, srtArr), t);
+          if (counter(mid, srtArr) >= t) {
+            answer = mid;
+            lt = mid + 1;
+          } else rt = mid - 1;
+          console.log("mid :", mid, "lt :", lt, "rt :", rt);
+        }
+
+        return answer;
+      }
+      const arr = [1, 2, 8, 4, 9];
+      console.log(solution(arr, 3));
+    </script>
+  </body>
+</html>
