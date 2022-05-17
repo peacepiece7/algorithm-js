@@ -13,14 +13,12 @@
           else {
             let quotient = Math.floor(v / 2);
             let remainder = v % 2;
-
             DFS(quotient);
+            3;
             answer.push(remainder);
           }
         }
-
         DFS(input);
-
         return answer.join("");
       }
       console.log(solution(input));
