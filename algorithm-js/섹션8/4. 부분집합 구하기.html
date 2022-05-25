@@ -1,4 +1,4 @@
-<html>
+<!-- <html>
   <head>
     <meta charset="UTF-8" />
     <title></title>
@@ -6,33 +6,42 @@
   <body>
     <script>
       function solution(m) {
-        for (let i = 1; i <= m; i++) {
-          function DFS(v) {
-            if (v > m) {
-              return;
-            } else {
-              console.log(v);
-              DFS(v * 2);
-              DFS(v * 2 + 1);
-            }
-          }
-          DFS(i);
-        }
-      }
-      console.log(solution(3));
-
-      function solution1(m) {
-        function DFS(v) {
-          if (v > m) {
-            return;
+        let answer = [];
+        function DFS(m) {
+          console.log(m);
+          if (m <= 0) {
           } else {
-            console.log(v);
-            DFS(v * 2);
-            DFS(v * 2 + 1);
+            DFS(Math.floor(m / 2));
+            answer.push(m % 2);
           }
         }
+        DFS(m);
+        return answer;
       }
-      console.log(solution1(3));
+
+      console.log(solution(11));
+    </script>
+  </body>
+</html>
+ -->
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+
+// 전위순회  출력  : 1  2  4  5  3  6  7
+// 중위순회  출력  :  4  2  5  1  6  3  7
+// 후위순회  출력  :  4  5  2  6  7  3  1
+
+      function solution(m) {
+
+      }
+
+      console.log(solution(1));
     </script>
   </body>
 </html>

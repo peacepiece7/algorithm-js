@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(input) {
+        let ch = Array.from({ length: input }, (j, k) => 0);
+        let arr = Array.from({ length: input }, (j, k) => k + 1);
+        console.log(ch);
+        function DFS(n) {
+          if (n == input) {
+            let answer = [];
+            for (let i = 0; i < ch.length; i++) {
+              if (ch[i] === 1) answer.push(arr[i]);
+            }
+            console.log(answer);
+            return;
+          } else {
+            ch[n] = 1;
+            DFS(n + 1);
+            ch[n] = 0;
+            DFS(n + 1);
+          }
+        }
+        DFS(0);
+      }
+
+      console.log(solution(3));
+    </script>
+  </body>
+</html>
