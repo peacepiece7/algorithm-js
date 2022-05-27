@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const arr = [81, 58, 42, 33, 61];
+      const W = 259;
+
+      function solution(total, arr) {
+        let answer = 0;
+        let n = arr.length;
+        function DFS(L, sum) {
+          if (sum > total) return;
+          if (L === n) {
+            answer = Math.max(answer, sum);
+          } else {
+            DFS(L + 1, sum + arr[L]);
+            DFS(L + 1, sum);
+          }
+        }
+        DFS(0, 0);
+        return answer;
+      }
+
+      console.log(solution(W, arr));
+    </script>
+  </body>
+</html>

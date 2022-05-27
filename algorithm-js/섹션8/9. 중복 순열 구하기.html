@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, m) {
+        let arr = Array.from({ length: n }, (v, k) => k + 1);
+        for (let i = 0; i < n; i++) {
+          for (let j = 0; j < m; j++) {
+            for (let k = 0; k < m; k++) {
+              console.log(arr[i], arr[j], arr[k]);
+            }
+          }
+        }
+      }
+      // 음...
+      //   console.log(solution(3, 3));
+
+      function solution2(n, m) {
+        let arr = Array.from({ length: n }, (v, k) => k + 1);
+        let tmp = Array.from({ length: m }, (v, k) => null);
+        function DFS(L, m) {
+          if (L == m) {
+            console.log(tmp.slice());
+            // console.log(tmp);
+
+            return;
+          } else {
+            for (let i = 0; i < m + 1; i++) {
+              tmp[L] = arr[i];
+              DFS(L + 1, m);
+            }
+          }
+        }
+        DFS(0, m);
+      }
+
+      //   function solution2(n, m) {
+      //     let arr = Array.from({ length: n }, (v, k) => k + 1);
+      //     let tmp = Array.from({ length: m }, (v, k) => null);
+      //     function DFS(L) {
+      //       if (L == m) {
+      //         console.log(tmp);
+      //         return;
+      //       } else {
+      //         for (let i = 1; i <= n; i++) {
+      //           tmp[L] = i;
+      //           DFS(L + 1);
+      //         }
+      //       }
+      //     }
+      //     DFS(0);
+      //   }
+
+      console.log(solution2(3, 2));
+    </script>
+  </body>
+</html>
