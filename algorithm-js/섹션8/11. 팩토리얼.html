@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      const input = 5;
+      function solution(input) {
+        let m = input;
+        let answer;
+        function DFS(L, sum) {
+          if (input - L === 0) {
+            answer = sum;
+            return;
+          } else {
+            sum = sum * (m - L);
+            DFS(L + 1, sum);
+          }
+        }
+        DFS(0, 1);
+        return answer;
+      }
+      console.log(solution(input));
+
+      let input2 = 5;
+      function solution2(m) {
+        let answer;
+        function DFS(m) {
+          if (m === 1) return 1;
+          else return m * DFS(m - 1);
+        }
+        answer = DFS(m);
+        return answer;
+      }
+    </script>
+  </body>
+</html>

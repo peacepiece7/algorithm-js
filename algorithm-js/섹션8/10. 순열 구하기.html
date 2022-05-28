@@ -5,13 +5,55 @@
   </head>
   <body>
     <script>
-      const input = [];
-      function solution(input) {
-        let answer;
-
-        return answer;
+      const m = 2;
+      const input = [3, 6, 9];
+      function solution(input, m) {
+        let answerArr = Array.from({ length: m }, () => null);
+        function DFS(L, answerArr, input) {
+          let tmpArr = input.slice();
+          if (L === m) {
+            console.log(answerArr);
+            return;
+          } else {
+            for (let i = 0; i < tmpArr.length; i++) {
+              answerArr[L] = tmpArr[i];
+              let _tmpArr = tmpArr.slice();
+              _tmpArr.splice(L, 1);
+              DFS(L + 1, answerArr, _tmpArr);
+            }
+          }
+        }
+        DFS(0, answerArr, input);
       }
-      console.log(solution(input));
+      // solution(input, m);
+
+      let input2 = [3, 6, 9];
+      const m2 = 2;
+
+      function solution2(arr, m) {
+        let ch = Array.from({ length: arr.length }, () => 0);
+        let tmp = Array.from({ length: m }, () => null);
+
+        function DFS(L, tmp, ch) {
+          if (L === m) {
+            let _tmp = tmp.slice();
+            console.log(_tmp);
+            return;
+          } else {
+            for (let i = 0; i < arr.length; i++) {
+              // 순열 외우기
+              if (ch[i] !== 1) {
+                tmp[L] = arr[i];
+                ch[i] = 1;
+                DFS(L + 1, tmp, ch);
+                ch[i] = 0;
+              }
+            }
+          }
+        }
+        DFS(0, tmp, ch);
+      }
+      solution2(input2, m2);
     </script>
   </body>
 </html>
