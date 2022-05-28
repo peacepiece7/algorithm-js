@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      const input = [1, 2, 5];
+      const total = 15;
+      function solution(input, total) {
+        let answer = Number.MAX_SAFE_INTEGER;
+        let arr = input;
+        let cnt = 0;
+        function DFS(L, sum) {
+          cnt++;
+          // cut-edge
+          if (L >= answer) return;
+          if (sum > total) return;
+          if (sum === total) {
+            answer = Math.min(answer, L);
+          } else for (let i = 0; i < arr.length; i++) DFS(L + 1, sum + arr[i]);
+        }
+        DFS(0, 0);
+        console.log("cnt :", cnt);
+        return answer;
+      }
+      console.log(solution(input, total));
+    </script>
+  </body>
+</html>
