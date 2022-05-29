@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      let f = 4;
+      let n = 16;
+      function solution(f, n) {
+        function DFS(L, f, n) {
+          if (n <= 1 || L === f) {
+            return;
+          } else {
+            for (let i = 1; i <= n; i++) {
+              DFS(L + 1, f, i);
+            }
+          }
+        }
+      }
+      console.log(solution(f, n));
+    </script>
+  </body>
+</html>

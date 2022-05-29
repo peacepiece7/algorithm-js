@@ -5,9 +5,20 @@
   </head>
   <body>
     <script>
-      const input = 5;
-      function solution(input) {}
-      console.log(solution(input));
+      let n = 5;
+      let r = 3;
+      const dy = Array.from({ length: 10 }, () => Array(10).fill(0));
+      function solution(n, r) {
+        function DFS(n, r) {
+          if (n === r || r === 0) {
+            return 1;
+          } else {
+            return DFS(n - 1, r - 1) + DFS(n - 1, r);
+          }
+        }
+        return DFS(n, r);
+      }
+      console.log(solution(n, r));
     </script>
   </body>
 </html>
